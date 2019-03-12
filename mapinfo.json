@@ -4,7 +4,7 @@
         "neighbors": [
             2,
             3,
-            3
+            4
         ]
     },
     "2": {
@@ -17,10 +17,10 @@
         "name": "St. Louis",
         "neighbors": [
             1,
-            3
+            4
         ]
     },
-    "3": {
+    "4": {
         "name": "Little Rock",
         "neighbors": [
             1,
