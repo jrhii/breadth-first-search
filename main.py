@@ -17,15 +17,15 @@ import json
 import sys
 
 # I have chosen to organize the cities by a key to allow for the potential of duplicate city names
-START_KEY = 2
-GOAL_KEY = 3
+START_KEY = 15
+GOAL_KEY = 6
 
 # Here is our BTS funciton.  It is generic, and not specific to our Romanian Map problem.
 # As long as the initialNode has a key and a list of connected nodes ("key" and "links" respectively), it functions.
 # Note: under its current version it also needs a property named "value" and that property must be a string,
 # but that is only for demonstration purposes of printing information, and can be removed
 def breadthFirstSearch(initialNode, goalNodeKey):
-    exploredNodes = []
+    exploredNodes = [initialNode.key]
     searchQueue = deque([initialNode])
     # dictionary, where each entry is a OneWayTreeNode that you can route to the initialNode
     pathHistory = {
@@ -49,8 +49,8 @@ def breadthFirstSearch(initialNode, goalNodeKey):
 
             # if we haven't explored this not, add it to the queue and the path history
             if not isExplored:
-                pathHistory[str(link.key)] = OneWayTreeNode(
-                    link.key, link.value, pathHistory[str(currentNode.key)])
+                pathHistory[str(link.key)] = OneWayTreeNode(link.key, link.value, pathHistory[str(currentNode.key)])
+                exploredNodes.append(link.key)
                 searchQueue.append(link)
 
     # at this point, we have either exited the above loop after finding our goal,
